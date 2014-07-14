@@ -1,7 +1,6 @@
 Anthro Docs
 
 Minimum Marketing Features:
-
         - All Docs in Database
         - Doc Homepage
         - Collaborative Documentation Page
@@ -15,7 +14,6 @@ User Stories:
         - Get Docs into database
 
 Engineering Tasks
-        - Static Code Analysis (Lint)
         - CI
         - Server-Side Testing
         - Client Side Testing
