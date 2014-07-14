@@ -1,0 +1,12 @@
+{
+  "name": "TDJS",
+  "version": "0.0.0",
+  "description": "Docs",
+  "main": "index.js",
+  "devDependencies": {"jake": "latest"},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhi",
+  "license": "ISC"
+}
