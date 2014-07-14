@@ -15,7 +15,6 @@ User Stories:
         - Get Docs into database
 
 Engineering Tasks
-        - Automated Build
         - Static Code Analysis (Lint)
         - CI
         - Server-Side Testing
