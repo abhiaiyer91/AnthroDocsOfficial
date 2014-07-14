@@ -16,12 +16,12 @@ User Stories:
         - Get Docs into database
 
 Engineering Tasks
+        - Abstract PORT Numbers
         - CI
-        - Server-Side Testing
         - Client Side Testing
 
 Current Todos
-        -
+        - Create the Simple HTTP Server
 
 
 Future Ideas:
