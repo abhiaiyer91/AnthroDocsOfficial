@@ -1,6 +1,7 @@
 /*global desc, task, jake, fail, complete */
 (function() {
     "use strict";
+    var Mocha = require("mocha");
 
     task("default", ["lint"]);
 
@@ -15,10 +16,27 @@
         lint.validateFileList(files.toArray(), options, {});
     });
 
-    desc("Test Everything");
-    task("test", [], function(){
-        console.llog("test goes here");
-    });
+    desc("Run tests");
+    task("test", [], function() {
+        var mocha = new Mocha({ui: "bdd"});
+        testFiles().forEach(mocha.addFile.bind(mocha));
+
+        var failures = false;
+        mocha.run()
+            .on("fail", function() {
+                failures = true;
+            }).on("end", function() {
+                if (failures) fail("Tests failed");
+                complete();
+            });
+    }, {async: true});
+
+    function testFiles() {
+        var files = new jake.FileList();
+        files.include("src/**/_*_test.js");
+        return files.toArray();
+    }
+
 
     function nodeLintOptions() {
         return {
