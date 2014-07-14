@@ -1,9 +1,9 @@
 /*global desc, task, jake, fail, complete */
 (function() {
     "use strict";
-    var Mocha = require("mocha");
 
-    task("default", ["lint"]);
+    desc("Build and test");
+    task("default", ["lint", "test"]);
 
     desc("Lint everything");
     task("lint", [], function() {
@@ -13,30 +13,31 @@
         files.include("**/*.js");
         files.exclude("node_modules");
         var options = nodeLintOptions();
-        lint.validateFileList(files.toArray(), options, {});
+        var passed = lint.validateFileList(files.toArray(), options, {});
+        if (!passed) fail("Lint failed");
     });
 
-    desc("Run tests");
+    desc("Test everything");
     task("test", [], function() {
-        var mocha = new Mocha({ui: "bdd"});
-        testFiles().forEach(mocha.addFile.bind(mocha));
-
-        var failures = false;
-        mocha.run()
-            .on("fail", function() {
-                failures = true;
-            }).on("end", function() {
-                if (failures) fail("Tests failed");
-                complete();
-            });
+        var reporter = require("nodeunit").reporters["default"];
+        reporter.run(['src/server/_server_test.js'], null, function(failures) {
+            if (failures) fail("Tests failed");
+            complete();
+        });
     }, {async: true});
 
-    function testFiles() {
-        var files = new jake.FileList();
-        files.include("src/**/_*_test.js");
-        return files.toArray();
-    }
-
+    desc("Integrate");
+    task("integrate", ["default"], function() {
+        console.log("1. Make sure 'git status' is clean.");
+        console.log("2. Build on the integration box.");
+        console.log("   a. Walk over to integration box.");
+        console.log("   b. 'git pull'");
+        console.log("   c. 'jake'");
+        console.log("   d. If jake fails, stop! Try again after fixing the issue.");
+        console.log("3. 'git checkout integration'");
+        console.log("4. 'git merge master --no-ff --log'");
+        console.log("5. 'git checkout master'");
+    });
 
     function nodeLintOptions() {
         return {

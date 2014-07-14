@@ -8,4 +8,4 @@ Assuming you have Node.js
 To Build:
 
         Run ./jake.sh
-        Test Framework = Mocha
+        Test Framework = NodeUnit Server Side
