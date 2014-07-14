@@ -17,3 +17,8 @@ Engineering Tasks
         - CI
         - Server-Side Testing
         - Client Side Testing
+
+Current To Dos:
+        - Choose Testing Framework
+        - Abstract the framework
+        - Swamp out different frameworks

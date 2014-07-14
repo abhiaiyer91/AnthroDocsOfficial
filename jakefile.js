@@ -15,6 +15,11 @@
         lint.validateFileList(files.toArray(), options, {});
     });
 
+    desc("Test Everything");
+    task("test", [], function(){
+        console.llog("test goes here");
+    });
+
     function nodeLintOptions() {
         return {
             bitwise:true,
