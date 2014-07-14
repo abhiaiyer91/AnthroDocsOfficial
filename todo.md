@@ -1,5 +1,7 @@
 Anthro Docs
 
+IDEs are a CONVENIENCE NOT A CRITICAL STRUCTURE.
+
 Minimum Marketing Features:
         - All Docs in Database
         - Doc Homepage
@@ -18,6 +20,10 @@ Engineering Tasks
         - Server-Side Testing
         - Client Side Testing
 
-Current To Dos:
-        - Abstract the framework
-        - Swamp out different frameworks
+Current Todos
+        -
+
+
+Future Ideas:
+        - Abstract the framework(We need a walking Example first)
+
