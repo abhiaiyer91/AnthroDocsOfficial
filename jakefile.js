@@ -39,6 +39,35 @@
         console.log("5. 'git checkout master'");
     });
 
+    task("node", [], function() {
+        var NODE_VERSION = "v0.10.29";
+
+        sh("node --version", function(stdout) {
+
+            if(stdout.trim() === NODE_VERSION) {
+                console.log(stdout);
+            } else {
+                fail("Incorrect node version. Expected " + NODE_VERSION);
+            }
+            complete();
+        });
+    }, {async: true});
+
+    function sh(command, callback) {
+        console.log("> " + command);
+
+        var stdout = "";
+        var process = jake.createExec(command, {printStdout:true, printStderr: true});
+        process.on("stdout", function(chunk) {
+            stdout += chunk;
+        });
+        process.on("cmdEnd", function() {
+            console.log();
+            callback(stdout);
+        });
+        process.run();
+    }
+
     function nodeLintOptions() {
         return {
             bitwise:true,
