@@ -10,18 +10,18 @@ Minimum Marketing Features:
         - more Collaborative features
 
 User Stories:
-        - "Hello World" the Server
-        - "hello world" the Client (one browser first)
+        - serve the doc dashboard page
+        - clever 404 errors for noncorrect routes
+        - deploy
         - Support all major browsers
         - Get Docs into database
 
 Engineering Tasks
-        - Abstract PORT Numbers
         - CI
         - Client Side Testing
 
 Current Todos
-        - Create the Simple HTTP Server
+        -
 
 
 Future Ideas:
